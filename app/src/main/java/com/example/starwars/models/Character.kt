@@ -1,7 +1,12 @@
 package com.example.starwars.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "characters")
 data class Character(
-    val _id: String,
+    @PrimaryKey(autoGenerate = true)
+    val _id: Int,
     val films: List<String>,
     val homeworld: String = "",
     val gender: String = "",

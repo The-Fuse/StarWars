@@ -5,18 +5,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.starwars.R
+import com.example.starwars.database.DatabaseDao
+import com.example.starwars.database.LocalDatabase
 import com.example.starwars.databinding.FragmentHomeBinding
 import com.example.starwars.models.Character
+import com.example.starwars.repository.CharactersRepository
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: HomeViewModel
+    private lateinit var adapter: CharactersRecyclerAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater)
+
+        val dao = LocalDatabase.getDatabase(requireContext()).getDatabaseDao()
+
+        val repository = CharactersRepository(dao)
+        viewModel = ViewModelProvider(this,HomeViewModelFactory(repository ))[HomeViewModel::class.java]
 
 
         return binding.root
@@ -24,13 +35,16 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initializeCharacters()
+        viewModel.getCharacters().observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+            viewModel.insertCharacters(it)
+        })
     }
 
     private val data = mutableListOf<Character>(
         Character(
-            "1",
+            1,
             listOf(
                 "https://swapi.dev/api/films/1/",
                 "https://swapi.dev/api/films/2/",
@@ -56,7 +70,7 @@ class HomeFragment : Fragment() {
             "172"
         ),
         Character(
-            "2",
+            2,
             listOf(
                 "https://swapi.dev/api/films/1/",
                 "https://swapi.dev/api/films/2/",
@@ -81,7 +95,7 @@ class HomeFragment : Fragment() {
             "Mass Skywalker",
             "172"
         ),Character(
-            "3",
+            3,
             listOf(
                 "https://swapi.dev/api/films/1/",
                 "https://swapi.dev/api/films/2/",
@@ -109,7 +123,7 @@ class HomeFragment : Fragment() {
     )
 
     private fun initializeCharacters() {
-        val adapter = CharactersRecyclerAdapter()
+        adapter = CharactersRecyclerAdapter()
         binding.charactersRecyclerView.adapter = adapter
         adapter.submitList(data)
     }
