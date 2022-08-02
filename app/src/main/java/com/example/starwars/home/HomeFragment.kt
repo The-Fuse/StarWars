@@ -29,17 +29,12 @@ class HomeFragment : Fragment() {
         val repository = CharactersRepository(dao)
         viewModel = ViewModelProvider(this,HomeViewModelFactory(repository ))[HomeViewModel::class.java]
 
+        adapter = CharactersRecyclerAdapter()
+        binding.charactersRecyclerView.adapter = adapter
+
+        initializeCharacters(binding,adapter)
 
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initializeCharacters()
-        viewModel.getCharacters().observe(viewLifecycleOwner, Observer {
-            adapter.submitList(it)
-            viewModel.insertCharacters(it)
-        })
     }
 
     private val data = mutableListOf<Character>(
@@ -122,9 +117,10 @@ class HomeFragment : Fragment() {
         )
     )
 
-    private fun initializeCharacters() {
-        adapter = CharactersRecyclerAdapter()
-        binding.charactersRecyclerView.adapter = adapter
-        adapter.submitList(data)
+    private fun initializeCharacters(binding: FragmentHomeBinding,adapter: CharactersRecyclerAdapter) {
+        viewModel.getCharacters().observe(viewLifecycleOwner,Observer{
+            adapter.submitList(it.data)
+            it.data?.let { it1 -> viewModel.insertCharacters(it1) }
+        })
     }
 }

@@ -21,4 +21,5 @@ data class Character(
     val eyeColor: String = "",
     val starships: List<String>?,
     val name: String = "",
-    val height: String = "")
+    val height: String = ""
+)

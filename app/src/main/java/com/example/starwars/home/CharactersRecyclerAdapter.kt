@@ -10,10 +10,21 @@ import com.example.starwars.models.Character
 
 class CharactersRecyclerAdapter() :ListAdapter<Character,CharactersRecyclerAdapter.ViewHolder>(CharacterDiffCallback()) {
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder.from(parent)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = getItem(position)
+        holder.bind(item)
+    }
+
     class ViewHolder private constructor(private val binding: CharacterBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Character){
-            binding.characterName.text = item.name
-            binding.executePendingBindings()
+            binding.apply {
+                character = item
+                executePendingBindings()
+            }
         }
 
         companion object{
@@ -23,15 +34,6 @@ class CharactersRecyclerAdapter() :ListAdapter<Character,CharactersRecyclerAdapt
                 return ViewHolder(binding)
             }
         }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
     }
 }
 
