@@ -13,9 +13,9 @@ interface ApiService {
     @GET("/people")
     suspend fun getCharacters(
         @Query("page") page: Int = 1,
-    ): Response<Result<CharactersList>>
+    ): Response<CharactersList>
 
-    @GET("lego/people/{id}/")
+    @GET("/people/{id}/")
     suspend fun getSet(@Path("id") id: String): Response<Character>
 
 }

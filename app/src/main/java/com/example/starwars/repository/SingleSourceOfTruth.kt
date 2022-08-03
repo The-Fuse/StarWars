@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 fun <T, A> resultLiveData(
     databaseQuery: () -> LiveData<T>,
     networkCall: suspend () -> Result<A>,
-    saveCallResult: (A) -> Unit
+    saveCallResult: suspend (A) -> Unit
 ): LiveData<Result<T>> = liveData(Dispatchers.IO) {
     emit(Result.loading<T>())
     val source = databaseQuery.invoke().map { Result.success(it) }
