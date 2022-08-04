@@ -14,6 +14,7 @@ import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(private val charactersRepository: CharactersRepository): ViewModel() {
 
-    val charactersList: LiveData<PagingData<Character>> = charactersRepository.getCharactersCount().cachedIn(viewModelScope)
+    val charactersList: LiveData<PagingData<Character>> = charactersRepository.getCharactersCount()
+        .cachedIn(viewModelScope)
 
 }

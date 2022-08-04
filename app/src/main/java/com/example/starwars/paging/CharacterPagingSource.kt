@@ -13,16 +13,18 @@ class CharacterPagingSource(private val remoteDataSource: IRemoteDataSource) :
 
     private val TAG = "CharacterPagingSource"
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
+        val position = params.key ?: 1
         return try {
-            val position = params.key ?: 1
             val response = remoteDataSource.fetchCharacters(position)
+
+            Log.d(TAG, "load: $response")
 
             if (response.status == Result.Status.SUCCESS && response.data != null) {
                 Log.d(TAG, "load: ${response.data.results}")
                 LoadResult.Page(
                     data = response.data.results,
                     prevKey = if (position == 1) null else (position - 1),
-                    nextKey = if (position == response.data.count) null else (position + 1)
+                    nextKey = if (response.data.next==null) null else (position + 1)
                 )
             } else {
                 LoadResult.Error(throw Exception("No Response"))

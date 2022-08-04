@@ -5,8 +5,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "characters")
 data class Character(
-    @PrimaryKey(autoGenerate = true)
-    val _id: Int,
     val films: List<String>,
     val homeworld: String = "",
     val gender: String = "",
@@ -15,6 +13,7 @@ data class Character(
     val created: String = "",
     val mass: String = "",
     val vehicles: List<String>?,
+    @PrimaryKey
     val url: String = "",
     val hairColor: String = "",
     val birthYear: String = "",

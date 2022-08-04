@@ -3,6 +3,7 @@ package com.example.starwars.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.starwars.databinding.CharacterBinding
 import com.example.starwars.models.Character
@@ -38,4 +39,14 @@ class CharacterPagingAdapter: PagingDataAdapter<Character,CharacterPagingAdapter
     }
 
 
+}
+
+class CharacterDiffCallback: DiffUtil.ItemCallback<Character>() {
+    override fun areItemsTheSame(oldItem: Character, newItem: Character): Boolean {
+        return oldItem.url == newItem.url
+    }
+
+    override fun areContentsTheSame(oldItem: Character, newItem: Character): Boolean {
+        return oldItem ==  newItem
+    }
 }

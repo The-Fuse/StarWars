@@ -27,7 +27,7 @@ class CharactersRepository @Inject constructor(
     )
 
     fun getCharactersCount(): LiveData<PagingData<Character>> = Pager(
-        config = PagingConfig(pageSize = 10, maxSize = 200),
+        config = PagingConfig(pageSize = 20, maxSize = 200),
         pagingSourceFactory = { CharacterPagingSource(remoteDataSource) }
     ).liveData
 

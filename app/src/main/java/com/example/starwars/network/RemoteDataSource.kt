@@ -7,7 +7,7 @@ import javax.inject.Inject
 class RemoteDataSource @Inject constructor(private val apiService: ApiService) : BaseDataSource(), IRemoteDataSource {
 
     override suspend fun fetchCharacters(pageNo: Int): Result<CharactersList> =
-        getResult { apiService.getCharacters(1) }
+        getResult { apiService.getCharacters(pageNo) }
 
 }
 
