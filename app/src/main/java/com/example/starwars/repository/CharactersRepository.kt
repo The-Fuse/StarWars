@@ -14,12 +14,12 @@ import com.example.starwars.network.IRemoteDataSource
 import com.example.starwars.network.RemoteDataSource
 import com.example.starwars.paging.CharacterPagingSource
 import com.example.starwars.utils.Result
+import javax.inject.Inject
 
-class CharactersRepository(
+class CharactersRepository @Inject constructor(
     private val localDataSource: ILocalDataSource,
     private val remoteDataSource: IRemoteDataSource
 ) {
-
     val characters: LiveData<Result<List<Character>>> = resultLiveData(
         databaseQuery = {localDataSource.getCharactersList() },
         networkCall = {remoteDataSource.fetchCharacters(1)},

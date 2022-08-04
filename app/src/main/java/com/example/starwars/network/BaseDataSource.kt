@@ -5,7 +5,7 @@ import retrofit2.Response
 
 abstract class BaseDataSource {
 
-    protected suspend fun <T> getResult(call: suspend () -> Response<T>): com.example.starwars.utils.Result<T> {
+    protected suspend fun <T> getResult(call: suspend () -> Response<T>): Result<T> {
         try {
             val response = call()
             if (response.isSuccessful) {
@@ -18,7 +18,7 @@ abstract class BaseDataSource {
         }
     }
 
-    private fun <T> error(message: String): com.example.starwars.utils.Result<T> {
-        return com.example.starwars.utils.Result.error("Network call has failed for a following reason: $message")
+    private fun <T> error(message: String): Result<T> {
+        return Result.error("Network call has failed for a following reason: $message")
     }
 }

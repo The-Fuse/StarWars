@@ -10,8 +10,9 @@ import com.example.starwars.repository.CharactersRepository
 import com.example.starwars.utils.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel(private val charactersRepository: CharactersRepository): ViewModel() {
+class HomeViewModel @Inject constructor(private val charactersRepository: CharactersRepository): ViewModel() {
 
     val charactersList: LiveData<PagingData<Character>> = charactersRepository.getCharactersCount().cachedIn(viewModelScope)
 

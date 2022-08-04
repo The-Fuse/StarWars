@@ -10,20 +10,4 @@ abstract class LocalDatabase: RoomDatabase() {
 
     abstract fun getDatabaseDao(): DatabaseDao
 
-    companion object {
-        private var INSTANCE: LocalDatabase? = null
-        fun getDatabase(context: Context): LocalDatabase {
-            if (INSTANCE == null) {
-                synchronized(this) {
-                    INSTANCE = Room.databaseBuilder(
-                        context,
-                        LocalDatabase::class.java,
-                        "characterDb"
-                    )
-                        .build()
-                }
-            }
-            return INSTANCE!!
-        }
-    }
 }

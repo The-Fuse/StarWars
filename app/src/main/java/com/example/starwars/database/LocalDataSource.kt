@@ -2,8 +2,9 @@ package com.example.starwars.database
 
 import androidx.lifecycle.LiveData
 import com.example.starwars.models.Character
+import javax.inject.Inject
 
-class LocalDataSource(localDatabase: LocalDatabase) : ILocalDataSource {
+class LocalDataSource @Inject constructor(localDatabase: LocalDatabase) : ILocalDataSource {
 
     private val dao = localDatabase.getDatabaseDao()
     override suspend fun insertCharacters(characters: List<Character>) {

@@ -33,6 +33,10 @@ android {
     dataBinding {
         enabled true
     }
+
+    kapt {
+        generateStubs = true
+    }
 }
 
 dependencies {
@@ -80,4 +84,11 @@ dependencies {
     // Paging
     def paging_version = "3.1.1"
     implementation "androidx.paging:paging-runtime:$paging_version"
+
+    // dagger
+    implementation 'com.google.dagger:dagger:2.42'
+    kapt 'com.google.dagger:dagger-compiler:2.42'
+    implementation 'com.google.dagger:dagger-android:2.38.1'
+    implementation 'com.google.dagger:dagger-android-support:2.38.1'
+
 }
