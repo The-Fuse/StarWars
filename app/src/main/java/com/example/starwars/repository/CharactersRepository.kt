@@ -10,6 +10,7 @@ import com.example.starwars.database.DatabaseDao
 import com.example.starwars.database.ILocalDataSource
 import com.example.starwars.database.LocalDataSource
 import com.example.starwars.models.Character
+import com.example.starwars.models.CharacterFilm
 import com.example.starwars.network.IRemoteDataSource
 import com.example.starwars.network.RemoteDataSource
 import com.example.starwars.paging.CharacterPagingSource
@@ -25,6 +26,10 @@ class CharactersRepository @Inject constructor(
         networkCall = {remoteDataSource.fetchCharacters(1)},
         saveCallResult = {localDataSource.insertCharacters(it.results)}
     )
+
+    suspend fun filmDetail(id:Int): Result<CharacterFilm> =
+        remoteDataSource.fetchFilm(id)
+
 
     fun getCharactersCount(): LiveData<PagingData<Character>> = Pager(
         config = PagingConfig(pageSize = 20, maxSize = 200),

@@ -1,4 +1,4 @@
-package com.example.starwars.home
+package com.example.starwars.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

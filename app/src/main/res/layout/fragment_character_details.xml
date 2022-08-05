@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="character"
+            type="com.example.starwars.models.Character" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.characterDetails.CharacterDetailsFragment">
+
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:stretchColumns="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow android:background="@color/colorPrimary">
+
+                <TextView
+                    style="@style/table_text"
+                    android:text="Name"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/table_text"
+                    android:text="@{character.name}"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    tools:text="Luine Walker" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    style="@style/table_text"
+                    android:text="Height" />
+
+                <TextView
+                    style="@style/table_text"
+                    android:maxWidth="100dp"
+                    android:text="@{character.height}"
+                    tools:text="172" />
+            </TableRow>
+
+            <TableRow android:background="@color/background">
+
+                <TextView
+                    style="@style/table_text"
+                    android:maxHeight="100dp"
+                    android:text="Mass" />
+
+                <TextView
+                    style="@style/table_text"
+                    android:maxWidth="100dp"
+                    android:text="@{character.mass}"
+                    tools:text="88" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    style="@style/table_text"
+                    android:maxWidth="20dp"
+                    android:text="Hair Color" />
+
+                <TextView
+                    style="@style/table_text"
+                    android:maxWidth="100dp"
+                    android:text="@{character.hair_color.toUpperCase()}"
+                    tools:text="Blond" />
+            </TableRow>
+
+            <TableRow android:background="@color/background">
+
+                <TextView
+                    style="@style/table_text"
+                    android:text="Skin Color" />
+
+                <TextView
+                    style="@style/table_text"
+                    android:maxWidth="100dp"
+                    android:text="@{character.skin_color.toUpperCase()}"
+                    tools:text="Fair" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    style="@style/table_text"
+                    android:text="Eye Color" />
+
+                <TextView
+                    style="@style/table_text"
+                    android:maxWidth="100dp"
+                    android:text="@{character.eye_color.toUpperCase()}"
+                    tools:text="Blonde" />
+            </TableRow>
+
+            <TableRow android:background="@color/background">
+
+                <TextView
+                    style="@style/table_text"
+                    android:text="Birth Year" />
+
+                <TextView
+                    style="@style/table_text"
+                    android:maxWidth="100dp"
+                    android:text="@{character.birth_year}"
+                    tools:text="19BBY" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    style="@style/table_text"
+                    android:text="Male" />
+
+                <TextView
+                    style="@style/table_text"
+                    android:maxWidth="100dp"
+                    android:text="@{character.gender.toUpperCase()}"
+                    tools:text="Male" />
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Films"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/film_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:spanCount="2"
+            android:clipToPadding="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
+            tools:itemCount="6"
+            tools:listitem="@layout/film_item" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

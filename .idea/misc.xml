@@ -6,7 +6,10 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.20896656534954408" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2641509433962264" />
         <entry key="app/src/main/res/layout/character.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/film_item.xml" value="0.40260416666666665" />
+        <entry key="app/src/main/res/layout/fragment_character_details.xml" value="0.2803234501347709" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.23055555555555557" />
+        <entry key="app/src/main/res/layout/fragment_movies_list.xml" value="0.1824074074074074" />
         <entry key="app/src/main/res/layout/layout_item.xml" value="0.40260416666666665" />
         <entry key="app/src/main/res/layout/loader_item.xml" value="0.40260416666666665" />
       </map>
