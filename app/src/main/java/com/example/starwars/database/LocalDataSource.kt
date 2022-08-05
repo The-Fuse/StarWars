@@ -2,6 +2,7 @@ package com.example.starwars.database
 
 import androidx.lifecycle.LiveData
 import com.example.starwars.models.Character
+import com.example.starwars.models.CharacterFilm
 import javax.inject.Inject
 
 class LocalDataSource @Inject constructor(localDatabase: LocalDatabase) : ILocalDataSource {

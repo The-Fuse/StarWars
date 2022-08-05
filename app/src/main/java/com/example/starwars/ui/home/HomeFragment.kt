@@ -1,4 +1,4 @@
-package com.example.starwars.home
+package com.example.starwars.ui.home
 
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -48,7 +49,9 @@ class HomeFragment : Fragment() {
 
     private fun initializeCharacters() {
 
-        adapter = CharacterPagingAdapter()
+        adapter = CharacterPagingAdapter(CharacterClickListener {
+            this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMoviesListFragment(it))
+        })
         adapter.stateRestorationPolicy =
             RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         binding.charactersRecyclerView.adapter = adapter.withLoadStateHeaderAndFooter(

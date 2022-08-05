@@ -7,7 +7,7 @@
 
         <variable
             name="clickListener"
-            type="android.view.View.OnClickListener" />
+            type="com.example.starwars.ui.home.CharacterClickListener" />
 
         <variable
             name="character"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="?attr/selectableItemBackground"
-        android:onClick="@{clickListener}">
+        android:onClick="@{() -> clickListener.onClick(character)}">
 
         <TextView
             android:id="@+id/character_name"

@@ -1,6 +1,7 @@
 package com.example.starwars.network
 
 import com.example.starwars.models.Character
+import com.example.starwars.models.CharacterFilm
 import com.example.starwars.models.CharactersList
 import com.example.starwars.utils.Result
 import retrofit2.Response
@@ -17,5 +18,8 @@ interface ApiService {
 
     @GET("people/{id}/")
     suspend fun getSet(@Path("id") id: String): Response<Character>
+
+    @GET("films/{id}")
+    suspend fun getFilm(@Path("id") id:Int): Response<CharacterFilm>
 
 }

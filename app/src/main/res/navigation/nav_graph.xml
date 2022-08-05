@@ -7,7 +7,20 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.starwars.home.HomeFragment"
+        android:name="com.example.starwars.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_moviesListFragment"
+            app:destination="@id/moviesListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/moviesListFragment"
+        android:name="com.example.starwars.ui.characterDetails.CharacterDetailsFragment"
+        android:label="fragment_movies_list"
+        tools:layout="@layout/fragment_character_details" >
+        <argument
+            android:name="characterDetails"
+            app:argType="com.example.starwars.models.Character" />
+    </fragment>
 </navigation>
