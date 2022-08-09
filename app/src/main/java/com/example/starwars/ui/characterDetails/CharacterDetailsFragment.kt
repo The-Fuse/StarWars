@@ -9,17 +9,19 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import androidx.paging.ExperimentalPagingApi
 import com.example.starwars.MainApplication
 import com.example.starwars.databinding.FragmentCharacterDetailsBinding
 import com.example.starwars.repository.CharactersRepository
 import com.example.starwars.utils.Result
 import javax.inject.Inject
 
-
+@ExperimentalPagingApi
 class CharacterDetailsFragment : Fragment() {
 
     private val TAG = "CharacterDetailsFragment"
     private lateinit var adapter: CharacterFilmsRecyclerAdapter
+
     @Inject
     lateinit var repository: CharactersRepository
     private lateinit var viewModel: CharacterDetailsViewModel
@@ -27,6 +29,7 @@ class CharacterDetailsFragment : Fragment() {
 
     private val args: CharacterDetailsFragmentArgs by navArgs()
     
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

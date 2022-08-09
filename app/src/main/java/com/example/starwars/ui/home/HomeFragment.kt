@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,9 +22,11 @@ import com.example.starwars.network.ApiService
 import com.example.starwars.network.RemoteDataSource
 import com.example.starwars.paging.LoaderAdapter
 import com.example.starwars.repository.CharactersRepository
+import com.example.starwars.ui.home.sortFilter.BottomListDialogFragment
 import retrofit2.Retrofit
 import javax.inject.Inject
 
+@ExperimentalPagingApi
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: HomeViewModel
@@ -44,7 +47,18 @@ class HomeFragment : Fragment() {
 
         initializeCharacters()
 
+        initializeClickListeners()
+
         return binding.root
+    }
+
+    private fun initializeClickListeners() {
+        binding.sortButton.setOnClickListener {
+            BottomListDialogFragment().show(childFragmentManager, SORT)
+        }
+        binding.filterButotn.setOnClickListener {
+            BottomListDialogFragment().show(childFragmentManager, FILTER)
+        }
     }
 
     private fun initializeCharacters() {
@@ -64,7 +78,13 @@ class HomeFragment : Fragment() {
         }
 
         viewModel.charactersList.observe(viewLifecycleOwner) {
+            Log.d(TAG, "initializeCharacters: $it")
             adapter.submitData(lifecycle,it)
         }
+    }
+
+    companion object {
+        const val SORT = "sort"
+        const val FILTER = "filter"
     }
 }

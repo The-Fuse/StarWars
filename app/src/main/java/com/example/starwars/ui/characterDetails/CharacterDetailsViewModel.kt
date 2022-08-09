@@ -2,6 +2,7 @@ package com.example.starwars.ui.characterDetails
 
 import android.util.Log
 import androidx.lifecycle.*
+import androidx.paging.ExperimentalPagingApi
 import com.example.starwars.models.Character
 import com.example.starwars.models.CharacterFilm
 import com.example.starwars.repository.CharactersRepository
@@ -10,6 +11,7 @@ import java.lang.IllegalArgumentException
 import javax.inject.Inject
 import javax.xml.transform.Result
 
+@ExperimentalPagingApi
 class CharacterDetailsViewModel (private val repository: CharactersRepository, val character: Character) : ViewModel() {
 
     private val TAG = "CharacterDetailsViewModel"
@@ -40,6 +42,7 @@ class CharacterDetailsViewModel (private val repository: CharactersRepository, v
     }
 }
 
+@ExperimentalPagingApi
 class CharacterDetailsViewModelFactory(private val repository: CharactersRepository, private val character: Character):
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
