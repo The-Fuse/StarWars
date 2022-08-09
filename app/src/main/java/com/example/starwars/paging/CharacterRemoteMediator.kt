@@ -15,7 +15,7 @@ import javax.inject.Inject
 class CharacterRemoteMediator @Inject constructor(
     private val apiService: ApiService,
     private val localDatabase: LocalDatabase
-): RemoteMediator<Int,Character>(), RemoteMediatorSource   {
+): RemoteMediator<Int,Character>()   {
 
     private val characterDao = localDatabase.getDatabaseDao()
     private val remoteKeysDao = localDatabase.getRemoteKeysDao()
