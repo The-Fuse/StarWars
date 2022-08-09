@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.paging.ExperimentalPagingApi
 import com.example.starwars.MainApplication
@@ -47,12 +48,21 @@ class CharacterDetailsFragment : Fragment() {
 
         initializeAdapter()
 
+        initializeClickListener()
+
         return binding.root
+    }
+
+    private fun initializeClickListener() {
+        binding.characterDetailBack.setOnClickListener {
+            this.findNavController().navigateUp()
+        }
     }
 
     private fun initializeAdapter() {
         adapter = CharacterFilmsRecyclerAdapter()
         binding.filmRecyclerView.adapter = adapter
+        binding.filmRecyclerView.isNestedScrollingEnabled = false
 
         viewModel.filmDetails.observe(viewLifecycleOwner, Observer {
             Log.d(TAG, "initializeAdapter: ${it.data}")

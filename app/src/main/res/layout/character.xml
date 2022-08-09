@@ -14,12 +14,19 @@
             type="com.example.starwars.models.Character" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="6dp"
         android:background="?attr/selectableItemBackground"
         android:onClick="@{() -> clickListener.onClick(character)}">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp">
 
         <TextView
             android:id="@+id/character_name"
@@ -74,4 +81,6 @@
             app:layout_constraintTop_toTopOf="@+id/textView"
             tools:text="343" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 </layout>
