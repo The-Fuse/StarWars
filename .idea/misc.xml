@@ -9,12 +9,12 @@
         <entry key="app/src/main/res/drawable/topbar.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2641509433962264" />
         <entry key="app/src/main/res/layout/character.xml" value="0.3296296296296296" />
-        <entry key="app/src/main/res/layout/film_item.xml" value="0.3458333333333333" />
+        <entry key="app/src/main/res/layout/film_item.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_character_details.xml" value="0.2803234501347709" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.29213483146067415" />
         <entry key="app/src/main/res/layout/fragment_movies_list.xml" value="0.1824074074074074" />
         <entry key="app/src/main/res/layout/layout_item.xml" value="0.40260416666666665" />
-        <entry key="app/src/main/res/layout/loader_item.xml" value="0.40260416666666665" />
+        <entry key="app/src/main/res/layout/loader_item.xml" value="0.21296296296296297" />
         <entry key="app/src/main/res/layout/sort_filter_dialog.xml" value="0.21296296296296297" />
         <entry key="app/src/main/res/layout/sort_filter_dialog_item.xml" value="0.3296296296296296" />
       </map>

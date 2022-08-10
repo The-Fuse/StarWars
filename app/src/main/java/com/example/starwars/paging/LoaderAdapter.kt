@@ -16,11 +16,9 @@ class LoaderAdapter: LoadStateAdapter<LoaderAdapter.LoaderViewHolder>() {
 
     class LoaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val progressBar = itemView.findViewById<ProgressBar>(R.id.progress_bar)
-        private val errorTextView = itemView.findViewById<TextView>(R.id.error_textView)
 
         fun bind(loadState: LoadState) {
             progressBar.isVisible = loadState is LoadState.Loading
-            errorTextView.isVisible = loadState is LoadState.Error
         }
     }
 

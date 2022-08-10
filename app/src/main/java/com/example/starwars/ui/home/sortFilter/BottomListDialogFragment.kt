@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.paging.ExperimentalPagingApi
 import com.example.starwars.databinding.SortFilterDialogBinding
 import com.example.starwars.models.SortFilter
@@ -37,6 +38,7 @@ class BottomListDialogFragment(): BottomSheetDialogFragment() {
 
     private fun addSortAdapter() {
         val adapter = SortFilterAdapter(SortFilterClickListener {
+            Toast.makeText(context,"This Feature will be coming soon!",Toast.LENGTH_SHORT).show()
             dismiss()
         })
         binding.sortFilterRecyclerView.adapter = adapter
@@ -49,11 +51,12 @@ class BottomListDialogFragment(): BottomSheetDialogFragment() {
 
     private fun addFilterAdapter() {
         val adapter = SortFilterAdapter(SortFilterClickListener {
+            Toast.makeText(context,"This Feature will be coming soon!",Toast.LENGTH_SHORT).show()
             dismiss()
         })
         binding.sortFilterRecyclerView.adapter = adapter
-        val filterList = listOf<SortFilter>(SortFilter(1,"Name",false),
-            SortFilter(2,"Created",false), SortFilter(3,"Updated",false)
+        val filterList = listOf<SortFilter>(SortFilter(1,"Male",false),
+            SortFilter(2,"Female",false)
         )
 
         adapter.submitList(filterList)

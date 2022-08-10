@@ -20,16 +20,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/white" />
 
-        <TextView
-            android:id="@+id/error_textView"
-            style="@style/bg_heading.margins"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Error Loading Data"
-            android:textAlignment="center" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
