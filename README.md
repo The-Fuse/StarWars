@@ -9,7 +9,8 @@
 A simple android application where user can get to see all the star war characters with thier details like films, dob, etc. It fetches data from [API](https://swapi.dev/), and
 shows it in list format. Along with this, there is offline support and pagingation also available.
 
-<img src="https://user-images.githubusercontent.com/54761454/168233275-fcb1153d-e846-44ff-80ff-88d0e73dfb7a.gif" width="240" height="500" />
+
+![WhatsApp Video 2022-08-11 at 2 11 18 PM](https://user-images.githubusercontent.com/54764235/184096528-92304d6e-b954-44d8-ac56-ac4a4302b2e2.gif)
 
 
 
